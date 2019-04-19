@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Yahtzee Nathan Joubert</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+  <p class="text-center font-weight-bold">Projet Client Riche : Yahtzee - Développer par Nathan Joubert - S4B - IUT Informatique de Bordeaux </p>
+
+  <div class="p-3 mb-2 bg-secondary text-white">
+    <div class="container border round" >
+      <table class="table table-sm table-bordered table-striped">
+        <tr>
+          <td>
+            <div id="dice-1" class="dice dice_1"></div>
+          </td>
+          <td>
+            <div id="dice-2" class="dice dice_2"></div>
+          </td>
+          <td>
+            <div id="dice-3" class="dice dice_3"></div>
+          </td>
+          <td>
+            <div id="dice-4" class="dice dice_4"></div>
+          </td>
+          <td>
+            <div id="dice-5" class="dice dice_5"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" name="checkbox_dice_1" value="Garder1" />
+            &nbsp; Garder
+          </td>
+          <td>
+            <input type="checkbox" name="checkbox_dice_2" value="Garder2" />
+            &nbsp; Garder
+          </td>
+          <td>
+            <input type="checkbox" name="checkbox_dice_3" value="Garder3" />
+            &nbsp; Garder
+          </td>
+          <td>
+            <input type="checkbox" name="checkbox_dice_4" value="Garder4" />
+            &nbsp; Garder
+          </td>
+          <td>
+            <input type="checkbox" name="checkbox_dice_5" value="Garder5" />
+            &nbsp; Garder
+          </td>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="5" align=center>
+          <div id="boutonLancer">
+            <button type="button" class="btn btn-light" value="Lancer">Lancer</button>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="5" align=center>
+          <div id="boutonValider">
+            <button type="button" class="btn btn-success">Valider</button>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="5" align=center>
+        <p id="msgErreur"></p>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="containerfloat-left"  id="tabPoint">
+        <div class="row">
+          <table class="table table-sm table-bordered table-striped" id="tablePoint1">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col" colspan="4" align=center>Section Inférieur</th>
+              </tr>
+              <tr>
+                <th scope="col" align=center>Dés</th>
+                <th scope="col" align=center>Points</th>
+                <th scope="col"> </th>
+                <th scope="col">Points definitifs</th>
+              </tr>
+            </thead>
+            <tr>
+              <td><img src="1.png" alt="Dice 1" height="25" width="25"></td>
+              <td id="champ_1"></td>
+              <td>
+                <input type="checkbox" name="checkbox_point_1" value="Garder_point_1" />
+                &nbsp; Garder
+              </td>
+              <td id="champ_1_def"></td>
+            </tr>
+            <tr>
+              <td><img src="2.png" alt="Dice 2" height="25" width="25"></td>
+              <td id="champ_2"></td>
+              <td>
+                <input type="checkbox" name="checkbox_point_2" value="Garder_point_2" />
+                &nbsp; Garder
+              </td>
+              <td id="champ_2_def"></td>
+            </tr>
+            <tr>
+              <td><img src="3.png" alt="Dice 3" height="25" width="25"></td>
+              <td id="champ_3"></td>
+              <td>
+                <input type="checkbox" name="checkbox_point_3" value="Garder_point_3" />
+                &nbsp; Garder
+              </td>
+              <td id="champ_3_def"></td>
+            </tr>
+            <tr>
+              <td><img src="4.png" alt="Dice 4" height="25" width="25"></td>
+              <td id="champ_4"></td>
+              <td>
+                <input type="checkbox" name="checkbox_point_4" value="Garder_point_4" />
+                &nbsp; Garder
+              </td>
+              <td id="champ_4_def"></td>
+            </tr>
+            <tr>
+              <td><img src="5.png" alt="Dice 5" height="25" width="25"></td>
+              <td id="champ_5"></td>
+              <td>
+                <input type="checkbox" name="checkbox_point_5" value="Garder_point_5" />
+                &nbsp; Garder
+              </td>
+              <td id="champ_5_def"></td>
+            </tr>
+            <tr>
+              <td><img src="6.png" alt="Dice 6" height="25" width="25"></td>
+              <td id="champ_6"></td>
+              <td>
+                <input type="checkbox" name="checkbox_point_6" value="Garder_point_6" />
+                &nbsp; Garder
+              </td>
+              <td id="champ_6_def"></td>
+            </tr>
+            <tr>
+              <td>Total de la section Inférieur</td>
+              <td id="champ_total_inf"></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="row">
+          <table class="table table-sm table-bordered table-striped " id="tablePoint2">
+            <thead class="thead-light">
+              <tr>
+                <th colspan="5" align=center>Section Supérieur</th>
+              </tr>
+              <tr>
+                <th align=center>Combinaisons </th>
+                <th align=center>Nombre Points</th>
+                <th align=center>Points</th>
+                <th align=center></th>
+                <th align=center>Points definitifs</th>
+              </tr>
+            </thead>
+            <tr>
+              <td>Brelan</td>
+              <td>Somme</td>
+              <td id="brelanCell"></td>
+              <td>
+                <input type="checkbox" name="checkbox_brelan" value="Garder_point_6" />
+                &nbsp; Garder
+              </td>
+              <td id="brelanCellDef"></td>
+            </tr>
+            <tr>
+              <td>Petite suite</td>
+              <td>30</td>
+              <td id="petiteSuiteCell"></td>
+              <td>
+                <input type="checkbox" name="checkbox_petiteSuite" value="Garder_point_6" />
+                &nbsp; Garder
+              </td>
+              <td id="petiteSuiteCellDef"></td>
+            </tr>
+            <tr>
+              <td>Grande suite</td>
+              <td>40</td>
+              <td id="grandeSuiteCell"></td>
+              <td>
+                <input type="checkbox" name="checkbox_grandeSuite" value="Garder_point_6" />
+                &nbsp; Garder
+              </td>
+              <td id="grandeSuiteCellDef"></td>
+            </tr>
+            <tr>
+              <td>Full</td>
+              <td>25</td>
+              <td id="fullCell"></td>
+              <td>
+                <input type="checkbox" name="checkbox_full" value="Garder_point_6" />
+                &nbsp; Garder
+              </td>
+              <td id="fullCellDef"></td>
+            </tr>
+            <tr>
+              <td>Carré</td>
+              <td>Somme</td>
+              <td id="carreCell"></td>
+              <td>
+                <input type="checkbox" name="checkbox_carre" value="Garder_point_6" />
+                &nbsp; Garder
+              </td>
+              <td id="carreCellDef"></td>
+            </tr>
+            <tr>
+              <td>Yahtzee</td>
+              <td>50</td>
+              <td id="yahtzeeCell"></td>
+              <td>
+                <input type="checkbox" name="checkbox_yatzee" value="Garder_point_6" />
+                &nbsp; Garder
+              </td>
+              <td id="yahtzeeCellDef"></td>
+            </tr>
+            <tr>
+              <td>Chance</td>
+              <td>Somme</td>
+              <td id="chanceCell"></td>
+              <td>
+                <input type="checkbox" name="checkbox_chance" value="Garder_point_6" />
+                &nbsp; Garder
+              </td>
+              <td id="chanceCellDef"></td>
+            </tr>
+            <tr>
+              <td colspan="4" align=center>Total de la section inférieur</td>
+              <td id="totalSecInf"></td>
+            </tr>
+            <tr>
+              <td colspan="4" align=center>Total de la section supérieur</td>
+              <td id="totalSecSup"></td>
+            </tr>
+            <tr>
+              <td colspan="4" align=center>Total</td>
+              <td id="totalScore"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+<script src="jquery-3.1.1min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+
+
+
+</body>
+
+<div id="dialog" title="Basic dialog">
+  <p>Il y a erreur</p>
+</div>
+
+
+</html>
